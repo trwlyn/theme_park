@@ -1,6 +1,7 @@
 package fact.it.projectthemepark.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 //Waluyono Tri r1012723
 public class Staff extends Person {
@@ -29,9 +30,8 @@ public class Staff extends Person {
 
     @Override
     public String toString() {
-        return "Staff{" +
-                "startDate=" + startDate +
-                ", student=" + student +
-                '}';
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "Staff member " + getSurName().toUpperCase() + " " + getFirstName() + " (" + isStudent() + ") " + "is employed since " + getStartDate().format(formatter) + ".";
+
     }
 }
