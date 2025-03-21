@@ -7,6 +7,29 @@
     <title>Theme Park App</title>
 </head>
 <body>
-    Body content
+
+<h2>New Staff Member</h2>
+
+<form action="/staffdetails" method="post">
+    <input type="hidden" name="action" value="createStaff">
+
+    <label for="firstName">First name:</label><br>
+    <input type="text" id="firstName" name="firstName"><br><br>
+
+    <label for="surname">Surname:</label><br>
+    <input type="text" id="surname" name="surname"><br><br>
+
+    <label for="employedSince">Employed since (dd/MM/yyyy):</label><br>
+    <input type="text" id="employedSince" name="employedSince"><br><br>
+
+    <label for="workingStudent">Working student?</label>
+    <input type="checkbox" id="workingStudent" name="workingStudent" value="true"><br><br>
+
+    <button type="submit">Confirm staff member</button>
+</form>
+
+<br>
+<a href="/">Back to home page</a>
+
 </body>
 </html>

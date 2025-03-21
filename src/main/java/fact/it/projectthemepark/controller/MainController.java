@@ -1,6 +1,14 @@
 package fact.it.projectthemepark.controller;
 
+import fact.it.projectthemepark.model.Staff;
+import fact.it.projectthemepark.model.Visitor;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class MainController{
@@ -13,6 +21,45 @@ public class MainController{
 
     //Write your code here after this line
 
+
+    @RequestMapping("/1_newvisitor")
+    public String newVisitor(){
+        return "1_newvisitor";
+    }
+
+    @RequestMapping("/visitordetails")
+    public String visitorDetails(HttpServletRequest request , Model model){
+
+        String surName = request.getParameter("surName");
+        String firstName = request.getParameter("firstName");
+        int yearOfBirth = Integer.parseInt(request.getParameter("yearOfBirth"));
+
+        Visitor visitor = new Visitor(surName, firstName);
+        visitor.setYearOfBirth(yearOfBirth);
+        model.addAttribute("visitor", visitor);
+        return "2_wpvisitor";
+
+    }
+
+    @RequestMapping("/3_newstaff")
+    public String newStaff(){
+        return "3_newstaff";
+    }
+
+    @RequestMapping("staffdetails")
+    public String staffDetails(HttpServletRequest request , Model model) {
+        String surName = request.getParameter("surName");
+        String firstName = request.getParameter("firstName");
+        boolean isStudent = Boolean.parseBoolean(request.getParameter("isStudent"));
+        String startDate = request.getParameter("employedSince");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        Staff staff = new Staff(surName, firstName);
+        staff.setStartDate(LocalDate.parse(startDate, formatter));
+        model.addAttribute("staff", staff);
+
+        return "4_newstaff";
+    }
 
 
 
