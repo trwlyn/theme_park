@@ -9,7 +9,9 @@ public class Visitor extends Person {
     private ArrayList<String> wishList = new ArrayList<>();
 
     public Visitor(String firstName, String surName) {
+
         super(firstName, surName);
+        this.themeParkCode = "undefined";
     }
 
     public int getYearOfBirth() {
@@ -29,12 +31,12 @@ public class Visitor extends Person {
     }
 
     public void setThemeParkCode(String themeParkCode) {
-        this.themeParkCode = "undefined";
+        this.themeParkCode = themeParkCode;
     }
 
 
     public boolean addToWishList(String attractionName) {
-        if (wishList.size() <= 5 && !wishList.contains(attractionName) ) {
+        if (wishList.size() < 5 && !wishList.contains(attractionName) ) {
             wishList.add(attractionName);
             return true;
         } return false;
@@ -47,7 +49,7 @@ public class Visitor extends Person {
 
     @Override
     public String toString() {
-        return "Visitor: " + super.toString() + " with park code: " + themeParkCode;
+        return "Visitor " + super.toString() + " with theme park code " + themeParkCode;
     }
 
 

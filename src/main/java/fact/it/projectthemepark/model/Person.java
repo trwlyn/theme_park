@@ -29,6 +29,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return surName.toUpperCase() + " ," + firstName;
+        return surName.toUpperCase() + " " + firstName;
     }
 }

@@ -1,8 +1,12 @@
 package fact.it.projectthemepark;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import fact.it.projectthemepark.model.Attraction;
 import fact.it.projectthemepark.model.Staff;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 public class AttractionTests {

@@ -10,6 +10,7 @@ public class Staff extends Person {
 
     public Staff(String firstName, String surName) {
         super(firstName, surName);
+        this.startDate = LocalDate.now();
     }
 
     public LocalDate getStartDate() {
@@ -31,7 +32,10 @@ public class Staff extends Person {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Staff member " + getSurName().toUpperCase() + " " + getFirstName() + " (" + isStudent() + ") " + "is employed since " + getStartDate().format(formatter) + ".";
+        if (student)
+            return "Staff member " + getSurName().toUpperCase() + " " + getFirstName() + " (working student) is employed since " + getStartDate().format(formatter);
+        else
+            return "Staff member " + getSurName().toUpperCase() + " " + getFirstName()  + " is employed since " + getStartDate().format(formatter);
 
     }
 }
