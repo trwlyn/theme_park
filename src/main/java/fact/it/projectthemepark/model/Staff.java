@@ -33,9 +33,9 @@ public class Staff extends Person {
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         if (student)
-            return "Staff member " + getSurName().toUpperCase() + " " + getFirstName() + " (working student) is employed since " + getStartDate().format(formatter);
+            return "Staff member " + super.toString() + " (working student) is employed since " + getStartDate().format(formatter);
         else
-            return "Staff member " + getSurName().toUpperCase() + " " + getFirstName()  + " is employed since " + getStartDate().format(formatter);
+            return "Staff member " + super.toString()  + " is employed since " + getStartDate().format(formatter);
 
     }
 }

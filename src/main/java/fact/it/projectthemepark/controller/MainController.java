@@ -47,7 +47,7 @@ public class MainController{
     }
 
     @RequestMapping("staffdetails")
-    public String staffDetails(HttpServletRequest request , Model model) {
+    public String staffdetails(HttpServletRequest request , Model model) {
         String surName = request.getParameter("surName");
         String firstName = request.getParameter("firstName");
         boolean isStudent = Boolean.parseBoolean(request.getParameter("isStudent"));
@@ -55,10 +55,11 @@ public class MainController{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         Staff staff = new Staff(surName, firstName);
+        staff.setStudent(isStudent);
         staff.setStartDate(LocalDate.parse(startDate, formatter));
         model.addAttribute("staff", staff);
 
-        return "4_newstaff";
+        return "4_wpstaff";
     }
 
 
