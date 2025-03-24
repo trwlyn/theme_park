@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--Tri Waluyono - r1012723 -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/img/style.css"/>
+    <title>Theme Park App</title>
+</head>
+<body>
+<h2>Our Visitors:</h2>
+
+<ol>
+    <li th:each="visitor :${visitorlist}"
+        th:text="${visitor.firstName} + ' ' + ${visitor.surName}">
+        <ul>
+            year of birth : <span th:text="${visitor.getYearOfBirth()}"></span><br>
+            park code : <span th:text="${visitor.getThemeParkCode()}"></span><br>
+            wish list : <span th:text="${visitor.getWishList()}"></span><br>
+        </ul>
+
+    </li>
+
+
+
+
+</ol>
+
+
+</body>
+</html>

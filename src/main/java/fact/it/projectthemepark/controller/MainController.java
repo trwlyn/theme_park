@@ -1,7 +1,10 @@
 package fact.it.projectthemepark.controller;
 
+import fact.it.projectthemepark.model.Attraction;
 import fact.it.projectthemepark.model.Staff;
+import fact.it.projectthemepark.model.ThemePark;
 import fact.it.projectthemepark.model.Visitor;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,63 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 @Controller
 public class MainController{
 
-    /*  You will need these methods in part 3 of the project assignment.
+    /*  You will need these methods in part 3 of the project assignment. */
     private ArrayList<Staff> staffArrayList;
     private ArrayList<Visitor> visitorArrayList;
     private ArrayList<ThemePark> themeParkArrayList;
-    */
 
     //Write your code here after this line
 
-
-    @RequestMapping("/1_newvisitor")
-    public String newVisitor(){
-        return "1_newvisitor";
+    /* You will need these methods in part 3 of the project assignment. */
+    @PostConstruct
+    public void initializeData(){
+        staffArrayList = fillStaffMembers();
+        visitorArrayList = fillVisitors();
+        themeParkArrayList = fillThemeParks();
     }
 
-    @RequestMapping("/visitordetails")
-    public String visitorDetails(HttpServletRequest request , Model model){
-
-        String surName = request.getParameter("surName");
-        String firstName = request.getParameter("firstName");
-        int yearOfBirth = Integer.parseInt(request.getParameter("yearOfBirth"));
-
-        Visitor visitor = new Visitor(surName, firstName);
-        visitor.setYearOfBirth(yearOfBirth);
-        model.addAttribute("visitor", visitor);
-        return "2_wpvisitor";
-
-    }
-
-    @RequestMapping("/3_newstaff")
-    public String newStaff(){
-        return "3_newstaff";
-    }
-
-    @RequestMapping("staffdetails")
-    public String staffdetails(HttpServletRequest request , Model model) {
-        String surName = request.getParameter("surName");
-        String firstName = request.getParameter("firstName");
-        boolean isStudent = Boolean.parseBoolean(request.getParameter("isStudent"));
-        String startDate = request.getParameter("employedSince");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        Staff staff = new Staff(surName, firstName);
-        staff.setStudent(isStudent);
-        staff.setStartDate(LocalDate.parse(startDate, formatter));
-        model.addAttribute("staff", staff);
-
-        return "4_wpstaff";
-    }
-
-
-
-
-/* You will need these methods in part 3 of the project assignment.
     private ArrayList<Staff> fillStaffMembers() {
         ArrayList<Staff> staffArrayList = new ArrayList<>();
 
@@ -169,7 +135,65 @@ public class MainController{
         themeParkArrayList.add(themepark3);
         return themeParkArrayList;
     }
-    */
+
+    @RequestMapping("/1_newvisitor")
+    public String newVisitor(){
+        return "1_newvisitor";
+    }
+
+    @RequestMapping("/visitordetails")
+    public String visitorDetails(HttpServletRequest request , Model model){
+
+        String surName = request.getParameter("surName");
+        String firstName = request.getParameter("firstName");
+        int yearOfBirth = Integer.parseInt(request.getParameter("yearOfBirth"));
+
+        Visitor visitor = new Visitor(surName, firstName);
+        visitor.setYearOfBirth(yearOfBirth);
+        model.addAttribute("visitor", visitor);
+        return "2_wpvisitor";
+
+    }
+
+    @RequestMapping("/3_newstaff")
+    public String newStaff(){
+        return "3_newstaff";
+    }
+
+    @RequestMapping("/staffdetails")
+    public String staffdetails(HttpServletRequest request , Model model) {
+        String surName = request.getParameter("surName");
+        String firstName = request.getParameter("firstName");
+        boolean isStudent = Boolean.parseBoolean(request.getParameter("isStudent"));
+        String startDate = request.getParameter("employedSince");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        Staff staff = new Staff(surName, firstName);
+        staff.setStudent(isStudent);
+        staff.setStartDate(LocalDate.parse(startDate, formatter));
+        model.addAttribute("staff", staff);
+
+        return "4_wpstaff";
+    }
+
+    @RequestMapping("/5_staffmemberlist")
+    public String staffarraylist (HttpServletRequest request , Model model) {
+        model.addAttribute("staffarraylist", staffArrayList);
+        return "5_staffmemberlist";
+    }
+
+    @RequestMapping("/6_visitorlist")
+    public String visitorlist(HttpServletRequest request , Model model) {
+        model.addAttribute("visitorlist", visitorArrayList);
+        return "6_visitorlist";
+    }
+
+
+
+
+
+
+
 
 
 }
