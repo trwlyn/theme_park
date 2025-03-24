@@ -9,22 +9,22 @@
 <body>
 <h2>Our Visitors:</h2>
 
-<ol>
-    <li th:each="visitor :${visitorlist}"
-        th:text="${visitor.firstName} + ' ' + ${visitor.surName}">
-        <ul>
-            year of birth : <span th:text="${visitor.getYearOfBirth()}"></span><br>
-            park code : <span th:text="${visitor.getThemeParkCode()}"></span><br>
-            wish list : <span th:text="${visitor.getWishList()}"></span><br>
-        </ul>
 
-    </li>
+<div th:each="visitor, stat : ${visitorlist}">
+    <p th:text="${stat.index + 1} + '. ' + ${visitor.firstName} + ' ' + ${visitor.surName}"></p>
+    <ul>
+        <li>year of birth: <span th:text="${visitor.yearOfBirth}"></span></li>
+        <li>park code: <span th:text="${visitor.themeParkCode}"></span></li>
+        <li>wish list:
+            <ul th:each="wish : ${visitor.wishList}">
+                ■ <span th:text="${wish}"></span>
 
-
-
-
-</ol>
-
+            </ul>
+        </li>
+    </ul>
+</div>
+<br>
+<a href="/">Back to home page</a>
 
 </body>
 </html>
