@@ -76,9 +76,12 @@ public class MainController{
         visitor2.setYearOfBirth(1996);
         Visitor visitor3 = new Visitor("Maria", "Bonetta");
         visitor3.setYearOfBirth(1998);
+        Visitor visitor4 = new Visitor("Tri", "Waluyono");
+        visitor4.setYearOfBirth(1978);
         visitorArrayList.add(visitor1);
         visitorArrayList.add(visitor2);
         visitorArrayList.add(visitor3);
+        visitorArrayList.add(visitor4);
         visitorArrayList.get(0).addToWishList("The big wave");
         visitorArrayList.get(0).addToWishList("Sky Scream");
         visitorArrayList.get(1).addToWishList("Pirate boat");
@@ -86,6 +89,8 @@ public class MainController{
         visitorArrayList.get(1).addToWishList("Halvar the ride");
         visitorArrayList.get(1).addToWishList("DreamCatcher");
         visitorArrayList.get(2).addToWishList("DinoSplash");
+        visitorArrayList.get(3).addToWishList("Sky Scream");
+        visitorArrayList.get(3).addToWishList("High Horse");
         return visitorArrayList;
     }
 
