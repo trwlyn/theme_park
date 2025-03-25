@@ -8,6 +8,8 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
@@ -31,6 +33,7 @@ public class MainController{
         visitorArrayList = fillVisitors();
         themeParkArrayList = fillThemeParks();
     }
+
 
     private ArrayList<Staff> fillStaffMembers() {
         ArrayList<Staff> staffArrayList = new ArrayList<>();
@@ -90,7 +93,6 @@ public class MainController{
         visitorArrayList.get(1).addToWishList("DreamCatcher");
         visitorArrayList.get(2).addToWishList("DinoSplash");
         visitorArrayList.get(3).addToWishList("Sky Scream");
-        visitorArrayList.get(3).addToWishList("High Horse");
         return visitorArrayList;
     }
 
@@ -142,7 +144,8 @@ public class MainController{
     }
 
     @RequestMapping("/1_newvisitor")
-    public String newVisitor(){
+    public String newVisitor (HttpServletRequest request , Model model) {
+            model.addAttribute("themeparks",themeParkArrayList);
         return "1_newvisitor";
     }
 
@@ -155,10 +158,18 @@ public class MainController{
 
         Visitor visitor = new Visitor(surName, firstName);
         visitor.setYearOfBirth(yearOfBirth);
+        visitorArrayList.add(visitor);
         model.addAttribute("visitor", visitor);
+
+
+
         return "2_wpvisitor";
 
     }
+
+
+
+
 
     @RequestMapping("/3_newstaff")
     public String newStaff(){
@@ -192,6 +203,10 @@ public class MainController{
         model.addAttribute("visitorlist", visitorArrayList);
         return "6_visitorlist";
     }
+
+
+
+
 
 
 

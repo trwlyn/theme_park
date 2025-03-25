@@ -22,7 +22,11 @@
         <label for="yearOfBirth">Year of birth</label>
         <input type="text" name="yearOfBirth" id="yearOfBirth">
     </p>
-    <button type="submit" name="submit" value="new visitor">Continue without theme park code</button>
+    <p th:each="themepark : ${themeparks}">
+        <label th:text="${themepark.getName()}"/>
+        <input type="radio" name="parknumber" th:value="${themeparkStat.index}" th:checked="${themeparkStat.index} == 0">
+    </p>
+    <button type="submit" name="submit" value="new visitor">Continue and generate theme park code</button>
 </form>
 <br>
 <p><a href="/">Back to home page</a></p>
