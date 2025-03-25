@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--Tri Waluyono - r1012723 -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/img/style.css"/>
+    <title>Theme Park App</title>
+</head>
+<body>
+<h2>New attraction.</h2>
+
+<form action="/attractiondetails">
+    <p>
+        <label for="name">Name attraction: </label>
+        <input type="text" name="name" id="name">
+    </p>
+    <p>
+        <label for="duration">Duration: (in sec)</label>
+        <input type="number" name="duration" id="duration">
+    </p>
+    <p>
+        <label for="photo">Photo: </label>
+        <input type="text" name="photo" id="photo">
+    </p>
+    <p>
+        <label for="themePark">In wich theme park</label>
+        <select id="themePark" name="themePark"></select>
+            <option th:each="themePark : ${themeParkArrayList}"
+                    th:text="${themePark.name}"
+                    th:value="${themePark.name}">
+            </option>
+        </select>
+    </p>
+    <p>
+        <label for="responsibleStaff">Who is responsibele for this attraction</label>
+        <select id="responsibleStaff" name="responsibleStaff"></select>
+            <option th:each="staff : ${staffArrayList}"
+                    th:value="${staff.firstName} + ' ' + ${staff.surName}"
+                    th:text="${staff.firstName} + ' ' + ${staff.surName}">
+
+            </option>
+
+    </p>
+    <button type="submit" >Confirm attraction</button>
+</form>
+
+<br>
+<a href="/">Back to home page</a>
+</body>
+</html>

@@ -7,11 +7,13 @@
     <title>Theme Park App</title>
 </head>
 <body>
-<h2>Staff member</h2>
+<h2>Theme parks (and number of attraction):</h2>
+<ul>
+    <li th:each="themeparkarraylist :${themeparkarraylist}">
+        <a th:text="${themeparkarraylist.getName()}"></a> (<a th:text="${themeparkarraylist.getNumberOfAttractions()}"></a>)
+    </li>
+</ul>
 
-<p id="staffdetails" th:text="${staff.toString}"></p>
-
-<br>
-<a href="/">Back to home page</a>
+<p><a href="/">Back to home page</a></p>
 </body>
 </html>

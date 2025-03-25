@@ -8,8 +8,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
@@ -156,17 +155,15 @@ public class MainController{
         String firstName = request.getParameter("firstName");
         int yearOfBirth = Integer.parseInt(request.getParameter("yearOfBirth"));
 
+
         Visitor visitor = new Visitor(surName, firstName);
         visitor.setYearOfBirth(yearOfBirth);
         visitorArrayList.add(visitor);
         model.addAttribute("visitor", visitor);
 
-
-
         return "2_wpvisitor";
 
     }
-
 
 
 
@@ -204,7 +201,37 @@ public class MainController{
         return "6_visitorlist";
     }
 
+    @RequestMapping("/7_newthemepark")
+    public String newThemePark(HttpServletRequest request , Model model) {
+        model.addAttribute("themeparks", themeParkArrayList);
+        return "7_newthemepark";
+    }
 
+    @RequestMapping("/newthemepark")
+    public String newthemepark(HttpServletRequest request , Model model) {
+        String name = request.getParameter("name");
+        int numberOfAttraction = Integer.parseInt(request.getParameter("numberOfAttraction"));
+
+        ThemePark themePark = new ThemePark(name);
+        themePark.getNumberOfAttractions();
+        model.addAttribute("themepark", themePark);
+
+        return "8_themeparklist";
+    }
+
+
+    @RequestMapping("/8_themeparklist")
+    public String themeparkarraylist(HttpServletRequest request, Model model) {
+        model.addAttribute("themeparkarraylist", themeParkArrayList);
+        return "8_themeparklist";
+    }
+
+    @RequestMapping("/9_newattraction")
+    public String newAttraction(HttpServletRequest request , Model model) {
+        model.addAttribute("themeparks", themeParkArrayList);
+        model.addAttribute("staffarraylist", staffArrayList);
+        return "9_newattraction";
+    }
 
 
 
