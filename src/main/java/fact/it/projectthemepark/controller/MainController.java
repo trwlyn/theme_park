@@ -158,6 +158,11 @@ public class MainController{
 
         Visitor visitor = new Visitor(surName, firstName);
         visitor.setYearOfBirth(yearOfBirth);
+
+        int themeParkNumber = Integer.parseInt(request.getParameter("parknumber"));
+        ThemePark themepark = themeParkArrayList.get(themeParkNumber);
+        themepark.registerVisitor(visitor);
+
         visitorArrayList.add(visitor);
         model.addAttribute("visitor", visitor);
 
