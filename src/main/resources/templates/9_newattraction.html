@@ -23,23 +23,23 @@
         <input type="text" name="photo" id="photo">
     </p>
     <p>
-        <label for="themePark">In wich theme park</label>
-        <select id="themePark" name="themePark"></select>
-            <option th:each="themePark : ${themeParkArrayList}"
-                    th:text="${themePark.name}"
-                    th:value="${themePark.name}">
-            </option>
+        <label></label>
+        <select name="themepark">
+            <option value="-1">In wich theme park?</option>
+            <option th:each="themepark : ${themeParkArrayList}"
+                    th:text="${themeparks.getName()}"
+                    th:value="${themeParkStat.index}"/>
         </select>
     </p>
     <p>
-        <label for="responsibleStaff">Who is responsibele for this attraction</label>
-        <select id="responsibleStaff" name="responsibleStaff"></select>
+        <select name="responsibleStaff">
+            <option value="_1">Who is responsibele for this attraction?</option>
             <option th:each="staff : ${staffArrayList}"
                     th:value="${staff.firstName} + ' ' + ${staff.surName}"
                     th:text="${staff.firstName} + ' ' + ${staff.surName}">
 
             </option>
-
+        </select>
     </p>
     <button type="submit" >Confirm attraction</button>
 </form>

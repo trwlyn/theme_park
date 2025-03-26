@@ -231,10 +231,19 @@ public class MainController{
         return "8_themeparklist";
     }
 
+    @RequestMapping("attractiondetails")
+    public String thmeparkdetails(HttpServletRequest request , Model model) {
+
+        int themeparkIndex = Integer.parseInt(request.getParameter("themeparkIndex"));
+        ThemePark themePark = themeParkArrayList.get(themeparkIndex);
+        model.addAttribute("themepark", themePark);
+        return "attractiondetails";
+    }
+
     @RequestMapping("/9_newattraction")
     public String newAttraction(HttpServletRequest request , Model model) {
         model.addAttribute("themeparks", themeParkArrayList);
-        model.addAttribute("staffarraylist", staffArrayList);
+        model.addAttribute("staff", staffArrayList);
         return "9_newattraction";
     }
 

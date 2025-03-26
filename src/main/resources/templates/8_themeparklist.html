@@ -10,7 +10,8 @@
 <h2>Theme parks (and number of attraction):</h2>
 <ul>
     <li th:each="themeparkarraylist :${themeparkarraylist}">
-        <a th:text="${themeparkarraylist.getName()}"></a> (<a th:text="${themeparkarraylist.getNumberOfAttractions()}"></a>)
+        <a th:href="@{/themeparkdetails(themeparkIndex=${themeparkarraylistStat.index})}"
+           th:text="${themeparkarraylist.getName()}"></a> (<a th:text="${themeparkarraylist.getNumberOfAttractions()}"></a>)
     </li>
 </ul>
 
