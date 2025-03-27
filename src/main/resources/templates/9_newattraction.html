@@ -9,7 +9,7 @@
 <body>
 <h2>New attraction.</h2>
 
-<form action="/attractiondetails">
+<form action="/attractionlist">
     <p>
         <label for="name">Name attraction: </label>
         <input type="text" name="name" id="name">
@@ -25,23 +25,23 @@
     <p>
         <label></label>
         <select name="themepark">
-            <option value="-1">In wich theme park?</option>
-            <option th:each="themepark : ${themeParkArrayList}"
-                    th:text="${themeparks.getName()}"
-                    th:value="${themeParkStat.index}"/>
+            <option  value="-1">In which theme park?</option>
+            <option th:each="themepark :${themeparks}"
+                    th:text="${themepark.getName()}"
+                    th:value="${themepark.getName}"/>
         </select>
     </p>
     <p>
         <select name="responsibleStaff">
-            <option value="_1">Who is responsibele for this attraction?</option>
-            <option th:each="staff : ${staffArrayList}"
+            <option value="_1">Who is responsible for this attraction?</option>
+            <option th:each="staff :${staffarraylist}"
                     th:value="${staff.firstName} + ' ' + ${staff.surName}"
-                    th:text="${staff.firstName} + ' ' + ${staff.surName}">
+                    th:text="${staff.firstName} + ' ' + ${staff.surName}"/>
 
-            </option>
+
         </select>
     </p>
-    <button type="submit" >Confirm attraction</button>
+    <button type="submit">Confirm attraction</button>
 </form>
 
 <br>

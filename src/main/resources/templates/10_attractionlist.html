@@ -7,6 +7,12 @@
     <title>Theme Park App</title>
 </head>
 <body>
+<h2 th:text=" 'Attraction of' + ${themepark.name}"></h2>
+<div th:each="attraction :${themeparks}" th:text="${attraction.getName()}">
+
+
+
+</div>
 
 
 

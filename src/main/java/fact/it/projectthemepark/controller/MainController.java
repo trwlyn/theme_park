@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
@@ -208,18 +209,17 @@ public class MainController{
 
     @RequestMapping("/7_newthemepark")
     public String newThemePark(HttpServletRequest request , Model model) {
-        model.addAttribute("themeparks", themeParkArrayList);
+
         return "7_newthemepark";
     }
 
     @RequestMapping("/newthemepark")
     public String newthemepark(HttpServletRequest request , Model model) {
         String name = request.getParameter("name");
-        int numberOfAttraction = Integer.parseInt(request.getParameter("numberOfAttraction"));
 
         ThemePark themePark = new ThemePark(name);
-        themePark.getNumberOfAttractions();
-        model.addAttribute("themepark", themePark);
+        themeParkArrayList.add(themePark);
+        model.addAttribute("themeparkarraylist", themeParkArrayList);
 
         return "8_themeparklist";
     }
@@ -231,21 +231,28 @@ public class MainController{
         return "8_themeparklist";
     }
 
-    @RequestMapping("attractiondetails")
-    public String thmeparkdetails(HttpServletRequest request , Model model) {
 
-        int themeparkIndex = Integer.parseInt(request.getParameter("themeparkIndex"));
-        ThemePark themePark = themeParkArrayList.get(themeparkIndex);
-        model.addAttribute("themepark", themePark);
-        return "attractiondetails";
-    }
 
     @RequestMapping("/9_newattraction")
     public String newAttraction(HttpServletRequest request , Model model) {
         model.addAttribute("themeparks", themeParkArrayList);
-        model.addAttribute("staff", staffArrayList);
+        model.addAttribute("staffarraylist", staffArrayList);
         return "9_newattraction";
     }
+
+    @RequestMapping("/attractionlist")
+    public String attractionarraylist(HttpServletRequest request , Model model, ModelMap modelMap) {
+        String name = request.getParameter("name");
+
+        Attraction attraction = new Attraction(name);
+        attraction.setName(name);
+
+        modelMap.addAttribute("attraction", attraction);
+        return "10_attractionlist";
+    }
+
+
+
 
 
 
