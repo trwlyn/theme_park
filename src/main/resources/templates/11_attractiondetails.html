@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--Tri Waluyono - r1012723 -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/img/style.css"/>
+    <title>Theme Park App</title>
+</head>
+<body>
+<h2 th:text="'We found this attraction: ' + ${attraction.name}"></h2>
+<p th:text="'Responsible: ' + ${attraction.responsible.firstName} + ' ' + ${attraction.responsible.surName}"></p>
+<img th:src="@{/img/{photo}(photo=${attraction.photo})}" alt="Attraction Photo" onerror="this.src='/img/noimage.jpg'"/>
+<<br>
+<a href="/">Back to home page</a>
+</body>
+</html>
